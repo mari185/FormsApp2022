@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formCadastro">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome"></ion-input>
+      <ng-container *ngFor="let erro of mensagens.nome">
+        <span class="msg-erro"
+        *ngIf="formCadastro.get('nome').hasError(erro.tipo) && (formCadastro.get('nome').dirty || formCadastro.get('nome').touched)">
+        {{erro.mensagem}}
+      </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input formControlName="descricao"></ion-input>
+      <ng-container *ngFor="let erro of mensagens.descricao">
+        <span class="msg-erro"
+        *ngIf="formCadastro.get('descricao').hasError(erro.tipo) && (formCadastro.get('descricao').dirty || formCadastro.get('descricao').touched)">
+        {{erro.mensagem}}
+      </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Validade</ion-label>
+      <ion-input formControlName="validade"></ion-input>
+      <ng-container *ngFor="let erro of mensagens.validade">
+        <span class="msg-erro"
+        *ngIf="formCadastro.get('validade').hasError(erro.tipo) && (formCadastro.get('validade').dirty || formCadastro.get('validade').touched)">
+        {{erro.mensagem}}
+      </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Preço</ion-label>
+      <ion-input formControlName="preco"></ion-input>
+      <ng-container *ngFor="let erro of mensagens.preco">
+        <span class="msg-erro"
+        *ngIf="formCadastro.get('preco').hasError(erro.tipo) && (formCadastro.get('preco').dirty || formCadastro.get('preco').touched)">
+        {{erro.mensagem}}
+      </span>
+      </ng-container>
+    </ion-item>
+
+  <ion-button expand="block" (click)="salvarCadastro()">SALVAR</ion-button>
+</form>
+</ion-content>
